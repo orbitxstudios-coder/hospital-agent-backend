@@ -46,6 +46,8 @@ except Exception as e:
 
 # 4. TRIGGER VAPI CALL
 # We pass the 'record_id' in metadata so the Agent knows which row to update later!
+# 4. TRIGGER VAPI CALL
+# We pass the 'record_id' in metadata so the Agent knows which row to update later!
 vapi_url = "https://api.vapi.ai/call"
 vapi_headers = {
     "Authorization": f"Bearer {VAPI_API_KEY}",
@@ -55,12 +57,12 @@ vapi_payload = {
     "assistantId": ASSISTANT_ID,
     "phoneNumberId": VAPI_PHONE_ID,
     "customer": {
-        "number": phone,
-        "name": name
+        "number": phone_number, # FIXED: Changed 'phone' to 'phone_number'
+        "name": patient_name    # FIXED: Changed 'name' to 'patient_name'
     },
-    # THIS SECTION IS MISSING OR INCORRECT IN YOUR CURRENT SETUP
     "metadata": {
-        "supabase_record_id": str(supabase_id) # The ID you got from inserting the row
+        "supabase_record_id": str(record_id), # Ensures the ID is a string for the URL
+        "patient_name": patient_name
     }
 }
 
