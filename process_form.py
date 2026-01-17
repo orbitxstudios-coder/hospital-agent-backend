@@ -55,11 +55,12 @@ vapi_payload = {
     "assistantId": ASSISTANT_ID,
     "phoneNumberId": VAPI_PHONE_ID,
     "customer": {
-        "number": phone_number
+        "number": phone,
+        "name": name
     },
+    # THIS SECTION IS MISSING OR INCORRECT IN YOUR CURRENT SETUP
     "metadata": {
-        "supabase_record_id": record_id,  # CRITICAL: This links the call to the database
-        "patient_name": patient_name
+        "supabase_record_id": str(supabase_id) # The ID you got from inserting the row
     }
 }
 
